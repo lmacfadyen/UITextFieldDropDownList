@@ -12,7 +12,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // The sample values
     var values = ["123 Main Street", "789 King Street", "456 Queen Street", "99 Apple Street"]
-    
     let cellReuseIdentifier = "cell"
     
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
@@ -51,7 +50,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // Manage keyboard and tableView visibility
@@ -65,7 +63,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         {
             textField.endEditing(true)
             tableView.hidden = true
-            
         }
     }
     
@@ -87,7 +84,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     // MARK: UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
@@ -97,7 +93,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
-        
         // Set text from the data model
         cell.textLabel?.text = values[indexPath.row]
         cell.textLabel?.font = textField.font
@@ -116,7 +111,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.0
     }
-
 
 }
 
