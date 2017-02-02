@@ -99,6 +99,8 @@
 				TargetAttributes = {
 					111F2CDE1D5615F00020442C = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = T6TG5W96HH;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -255,10 +257,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T6TG5W96HH;
 				INFOPLIST_FILE = UITextFieldDropDownList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lawrencem.UITextFieldDropDownList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -266,10 +270,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T6TG5W96HH;
 				INFOPLIST_FILE = UITextFieldDropDownList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lawrencem.UITextFieldDropDownList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -292,6 +298,7 @@
 				111F2CF31D5615F00020442C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

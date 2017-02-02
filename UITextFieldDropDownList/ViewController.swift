@@ -22,22 +22,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     
     // If user changes text, hide the tableView
-    @IBAction func textFieldChanged(sender: AnyObject) {
-        tableView.hidden = true
+    @IBAction func textFieldChanged(_ sender: AnyObject) {
+        tableView.isHidden = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 
         tableView.delegate = self
         tableView.dataSource = self
         textField.delegate = self
         
-        tableView.hidden = true
+        tableView.isHidden = true
         
         // Manage tableView visibility via TouchDown in textField
-        textField.addTarget(self, action: #selector(textFieldActive), forControlEvents: UIControlEvents.TouchDown)
+        textField.addTarget(self, action: #selector(textFieldActive), for: UIControlEvents.touchDown)
     }
     
     override func viewDidLayoutSubviews()
@@ -53,7 +53,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Manage keyboard and tableView visibility
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         guard let touch:UITouch = touches.first else
         {
@@ -62,37 +62,37 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if touch.view != tableView
         {
             textField.endEditing(true)
-            tableView.hidden = true
+            tableView.isHidden = true
         }
     }
     
     // Toggle the tableView visibility when click on textField
     func textFieldActive() {
-        tableView.hidden = !tableView.hidden
+        tableView.isHidden = !tableView.isHidden
     }
     
     // MARK: UITextFieldDelegate
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         // TODO: Your app can do something when textField finishes editing
         print("The textField ended editing. Do something based on app requirements.")
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
 
     // MARK: UITableViewDataSource
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return values.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
         // Set text from the data model
         cell.textLabel?.text = values[indexPath.row]
         cell.textLabel?.font = textField.font
@@ -100,15 +100,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // MARK: UITableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Row selected, so set textField to relevant value, hide tableView
         // endEditing can trigger some other action according to requirements
         textField.text = values[indexPath.row]
-        tableView.hidden = true
+        tableView.isHidden = true
         textField.endEditing(true)
     }
 
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.0
     }
 

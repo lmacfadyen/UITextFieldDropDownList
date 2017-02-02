@@ -10,8 +10,8 @@ import UIKit
 
 class NoCopyPasteUITextField: UITextField {
 
-    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-        if action == #selector(NSObject.paste(_:)) || action == #selector(NSObject.copy(_:)) || action == #selector(NSObject.select(_:)) || action == #selector(NSObject.selectAll(_:)){
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(UIResponderStandardEditActions.paste(_:)) || action == #selector(UIResponderStandardEditActions.copy(_:)) || action == #selector(UIResponderStandardEditActions.select(_:)) || action == #selector(UIResponderStandardEditActions.selectAll(_:)){
             return false
         }
         
