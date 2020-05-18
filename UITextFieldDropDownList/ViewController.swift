@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.isHidden = true
         
         // Manage tableView visibility via TouchDown in textField
-        textField.addTarget(self, action: #selector(textFieldActive), for: UIControlEvents.touchDown)
+        textField.addTarget(self, action: #selector(textFieldActive), for: UIControl.Event.touchDown)
     }
     
     override func viewDidLayoutSubviews()
@@ -67,7 +67,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Toggle the tableView visibility when click on textField
-    func textFieldActive() {
+    @objc func textFieldActive() {
         tableView.isHidden = !tableView.isHidden
     }
     
@@ -92,7 +92,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
+        let cell:UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?)!
         // Set text from the data model
         cell.textLabel?.text = values[indexPath.row]
         cell.textLabel?.font = textField.font
